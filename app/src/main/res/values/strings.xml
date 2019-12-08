@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Quizz4Games</string>
+
+    <string name="logo">logo</string>
+    <string name="game_btn">Game</string>
+    <string name="categories_btn">Categories</string>
+    <string name="profile_btn">Profile</string>
+    <string name="start_game">Start Game</string>
+    <string name="how_to_play">How to play?</string>
+    <string name="q_nr_img">TODO</string>
+    <string name="game_bg">TODO</string>
+    <string name="score_ico">score_ico</string>
+</resources>

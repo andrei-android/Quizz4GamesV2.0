@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".Activities.GameActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="396dp"
+        android:layout_height="578dp"
+        android:contentDescription="@string/game_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.405"
+        app:srcCompat="@drawable/game_bg" />
+
+    <TextView
+        android:id="@+id/q_area_game"
+        android:layout_width="295dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="132dp"
+        android:gravity="center"
+        android:text="Care este raspunsul la urmatoarea intrebare?"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+        android:layout_width="134dp"
+        android:layout_height="133dp"
+        android:max="100"
+        android:min="0"
+        android:progress="30"
+        android:indeterminate="true"
+        app:layout_constraintEnd_toEndOf="@+id/q_area_game"
+        app:layout_constraintStart_toStartOf="@+id/q_area_game"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <Button
+        android:id="@+id/ans1_btn_game"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/answer_btn"
+        android:hint="Button1"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/q_area_game" />
+
+    <Button
+        android:id="@+id/ans2_btn_game"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/answer_btn"
+        android:hint="Button2"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ans1_btn_game" />
+
+    <Button
+        android:id="@+id/ans3_btn_game"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/answer_btn"
+        android:hint="Button3"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ans2_btn_game" />
+
+    <Button
+        android:id="@+id/ans4_btn_game"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/answer_btn"
+        android:hint="Button4"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ans3_btn_game" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/q_nr_img"
+        app:layout_constraintEnd_toEndOf="@+id/q_number_game"
+        app:layout_constraintStart_toStartOf="@+id/q_number_game"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:srcCompat="@drawable/ic_live_help_24px" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/score_ico"
+        app:layout_constraintEnd_toEndOf="@+id/score_gameActivity"
+        app:layout_constraintStart_toStartOf="@+id/score_gameActivity"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:srcCompat="@drawable/ic_timeline_24px" />
+
+    <TextView
+        android:id="@+id/q_number_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="46dp"
+        android:hint="3/10"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/score_gameActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="46dp"
+        android:hint="2500"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,16 @@
 package com.sandu.quizz4games.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.sandu.quizz4games.QuestionsEn;
 import com.sandu.quizz4games.R;
@@ -24,7 +23,7 @@ public class GameActivity extends AppCompatActivity {
     private Button ans2_btn;
     private Button ans3_btn;
     private Button ans4_btn;
-    private TextView question, score, question_no;
+    private TextView question, score, question_no, textTimer;
     private QuestionsEn questions = new QuestionsEn();
 
     private String answer;
@@ -32,11 +31,12 @@ public class GameActivity extends AppCompatActivity {
     private int uScore;
     private int uQuestionsAnswered ;
 
-    ProgressBar mProgressBar;
-    CountDownTimer mCountDownTimer;
+    ProgressBar progressBar;
 
     Random r;
-    int i=0;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +63,13 @@ public class GameActivity extends AppCompatActivity {
         question_no = findViewById(R.id.q_number_game);
 
 
+
         // update question randomizer
         updateQuestion(r.nextInt(questionsLength));
         //...//
 
         //Timer
-        timer();
+       // timer();
 
         //Button Functions
 
@@ -288,28 +289,23 @@ public class GameActivity extends AppCompatActivity {
         ans4_btn.setEnabled(false);
     }
 
-    private void timer(){
 
 
-        mProgressBar= findViewById(R.id.progress_circular);
-        mProgressBar.setProgress(i);
-        mCountDownTimer=new CountDownTimer(5000,1000) {
+    public void timer(){
+        textTimer = findViewById(R.id.textTimer);
 
-            @Override
+        new CountDownTimer(10000, 1000) {
+
             public void onTick(long millisUntilFinished) {
-                Log.v("Log_tag", "Tick of Progress"+ i+ millisUntilFinished);
-                i++;
-                mProgressBar.setProgress(i*100/(5000/1000));
 
+
+                textTimer.setText(String.valueOf(millisUntilFinished / 1000));
+                progressBar.setProgress(-10);
             }
 
-            @Override
             public void onFinish() {
-                //Do what you want
-                i++;
-                mProgressBar.setProgress(100);
+
             }
-        };
-        mCountDownTimer.start();
+        }.start();
     }
 }

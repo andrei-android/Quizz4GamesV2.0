@@ -68,8 +68,8 @@ public class GameActivity extends AppCompatActivity {
         updateQuestion(r.nextInt(questionsLength));
         //...//
 
-        //Timer
-       // timer();
+//        //Timer
+//        timer();
 
         //Button Functions
 
@@ -227,6 +227,7 @@ public class GameActivity extends AppCompatActivity {
         ans4_btn.setEnabled(true);
 
 
+
     }
 
     // Update Question Function
@@ -240,6 +241,9 @@ public class GameActivity extends AppCompatActivity {
 
 
         answer = questions.getCorrectAnswer(num);
+
+        //Timer
+        timer();
 
     }
     //Other Functions
@@ -293,18 +297,20 @@ public class GameActivity extends AppCompatActivity {
 
     public void timer(){
         textTimer = findViewById(R.id.textTimer);
+        progressBar = findViewById(R.id.progressCircular);
 
         new CountDownTimer(10000, 1000) {
 
             public void onTick(long millisUntilFinished) {
 
-
                 textTimer.setText(String.valueOf(millisUntilFinished / 1000));
-                progressBar.setProgress(-10);
+                progressBar.setProgress(progressBar.getProgress()-10);
+
+
             }
 
             public void onFinish() {
-
+                startActivity(new Intent(GameActivity.this, HomeScreen.class));
             }
         }.start();
     }

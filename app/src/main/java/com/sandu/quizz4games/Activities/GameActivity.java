@@ -29,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
     private String answer;
     private int questionsLength = questions.questions.length;
     private int uScore;
-    private int uQuestionsAnswered ;
+    private int uQuestionsAnswered = 1 ;
 
     ProgressBar progressBar;
 
@@ -62,14 +62,20 @@ public class GameActivity extends AppCompatActivity {
 
         question_no = findViewById(R.id.q_number_game);
 
+        textTimer = findViewById(R.id.textTimer);
+        progressBar = findViewById(R.id.progressCircular);
+
 
 
         // update question randomizer
         updateQuestion(r.nextInt(questionsLength));
         //...//
 
-//        //Timer
-//        timer();
+//
+
+
+
+        question_no.setText(String.valueOf(1)+"/10");
 
         //Button Functions
 
@@ -228,10 +234,12 @@ public class GameActivity extends AppCompatActivity {
 
 
 
+
     }
 
     // Update Question Function
     private void updateQuestion(int num){
+
 
         question.setText(questions.getQuestions(num));
         ans1_btn.setText(questions.getChoice1(num));
@@ -242,12 +250,13 @@ public class GameActivity extends AppCompatActivity {
 
         answer = questions.getCorrectAnswer(num);
 
-        //Timer
-        timer();
+
 
     }
     //Other Functions
     private void wrongAnswer(){
+
+
         uScore -= 5;
         uQuestionsAnswered ++;
 
@@ -257,19 +266,18 @@ public class GameActivity extends AppCompatActivity {
         }
         question_no.setText(uQuestionsAnswered+"/10");
         score.setText(String.valueOf(uScore));
-
     }
 
     private void correctAnswer(){
         uScore +=15;
         score.setText(String.valueOf(uScore));
 
-//        uQuestionsAnswered += 0;
+
         question_no.setText(uQuestionsAnswered+"/10");
     }
 
     private void gameOver(){
-        if (uQuestionsAnswered>10){
+        if (uQuestionsAnswered > 10){
             startActivity(new Intent(GameActivity.this, HomeScreen.class));
         }
     }
@@ -294,24 +302,4 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-
-    public void timer(){
-        textTimer = findViewById(R.id.textTimer);
-        progressBar = findViewById(R.id.progressCircular);
-
-        new CountDownTimer(10000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-
-                textTimer.setText(String.valueOf(millisUntilFinished / 1000));
-                progressBar.setProgress(progressBar.getProgress()-10);
-
-
-            }
-
-            public void onFinish() {
-                startActivity(new Intent(GameActivity.this, HomeScreen.class));
-            }
-        }.start();
-    }
 }

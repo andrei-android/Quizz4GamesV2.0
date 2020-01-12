@@ -35,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
 
     Random r;
 
-
+    public CountDownTimer timer;
 
 
     @Override
@@ -61,9 +61,6 @@ public class GameActivity extends AppCompatActivity {
         score = findViewById(R.id.score_gameActivity);
 
         question_no = findViewById(R.id.q_number_game);
-
-        textTimer = findViewById(R.id.textTimer);
-        progressBar = findViewById(R.id.progressCircular);
 
 
 
@@ -249,6 +246,7 @@ public class GameActivity extends AppCompatActivity {
 
 
         answer = questions.getCorrectAnswer(num);
+        timer();
 
 
 
@@ -271,13 +269,13 @@ public class GameActivity extends AppCompatActivity {
     private void correctAnswer(){
         uScore +=15;
         score.setText(String.valueOf(uScore));
-
-
         question_no.setText(uQuestionsAnswered+"/10");
+
     }
 
     private void gameOver(){
         if (uQuestionsAnswered > 10){
+            timer.cancel();
             startActivity(new Intent(GameActivity.this, HomeScreen.class));
         }
     }
@@ -299,7 +297,41 @@ public class GameActivity extends AppCompatActivity {
         ans2_btn.setEnabled(false);
         ans3_btn.setEnabled(false);
         ans4_btn.setEnabled(false);
+        timer.cancel();
     }
 
+    private void timer(){
 
+        textTimer = findViewById(R.id.textTimer);
+        progressBar = findViewById(R.id.progressCircular);
+
+        textTimer.setText(String.valueOf(30));
+        progressBar.setProgress(300);
+        //Timer
+        timer = new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+
+                textTimer.setText(String.valueOf(millisUntilFinished / 1000));
+                progressBar.setProgress(progressBar.getProgress()-10);
+
+            }
+
+
+            public void onFinish() {
+
+                updateQuestion(r.nextInt(questionsLength));
+                textTimer.setText(String.valueOf(10));
+                progressBar.setProgress(300);
+            }
+        }.start();
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        if (timer !=null){
+            timer.cancel();
+        }
+    }
 }
